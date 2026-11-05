@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Empresa | Misión, Visión y Objetivo</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --negro: #0a0a0a;
+    --negro-suave: #121212;
+    --amarillo: #ffd700;
+    --amarillo-claro: #ffe600;
+    --verde: #2ecc71;
+    --verde-oscuro: #27ae60;
+    --morado-1: #6a0dad;
+    --morado-2: #8a2be2;
+    --morado-3: #9370db;
+    --morado-4: #4b0082;
+    --texto: #ffffff;
+    --texto-secundario: #cccccc;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--negro);
+    color: var(--texto);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 2px solid var(--amarillo);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--amarillo);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--verde);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--texto);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--amarillo);
+}
+
+/* Hero */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, var(--negro) 0%, var(--morado-4) 50%, var(--negro-suave) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero h1 span {
+    color: var(--amarillo);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--texto-secundario);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background: var(--amarillo);
+    color: var(--negro);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: var(--amarillo-claro);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--verde);
+    border: 2px solid var(--verde);
+    margin-left: 15px;
+}
+
+.btn-outline:hover {
+    background: var(--verde);
+    color: var(--negro);
+}
+
+/* Section title */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--amarillo);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--texto-secundario);
+    margin-bottom: 60px;
+    font-size: 1.1rem;
+}
+
+/* Misión Visión Objetivo */
+.valores {
+    padding: 100px 0;
+    background: var(--negro-suave);
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.valor-card {
+    background: var(--negro);
+    padding: 40px 30px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.valor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.valor-card.mision::before { background: var(--amarillo); }
+.valor-card.vision::before { background: var(--verde); }
+.valor-card.objetivo::before { background: var(--morado-2); }
+
+.valor-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--morado-3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.valor-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.valor-card.mision .valor-icon { color: var(--amarillo); }
+.valor-card.vision .valor-icon { color: var(--verde); }
+.valor-card.objetivo .valor-icon { color: var(--morado-2); }
+
+.valor-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--texto);
+}
+
+.valor-card p {
+    color: var(--texto-secundario);
+}
+
+/* Imágenes */
+.imagenes-section {
+    padding: 100px 0;
+    background: var(--negro);
+}
+
+.imagenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.imagen-box {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #222;
+    aspect-ratio: 16/9;
+}
+
+.imagen-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.imagen-box:hover img {
+    transform: scale(1.05);
+}
+
+.imagen-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.imagen-box:hover .imagen-overlay {
+    opacity: 1;
+}
+
+.imagen-overlay h3 {
+    color: var(--amarillo);
+    font-size: 1.5rem;
+}
+
+/* Stats */
+.stats {
+    padding: 80px 0;
+    background: var(--morado-1);
+    background: linear-gradient(135deg, var(--morado-1) 0%, var(--morado-4) 100%);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.stat-item h4 {
+    font-size: 3rem;
+    color: var(--amarillo);
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    color: var(--texto-secundario);
+}
+
+/* Contacto */
+.contacto {
+    padding: 100px 0;
+    background: var(--negro-suave);
+}
+
+.contacto .container {
+    max-width: 600px;
+}
+
+.contacto form {
+    background: var(--negro);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid #222;
+    display: grid;
+    gap: 20px;
+}
+
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 15px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: var(--texto);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contacto input:focus,
+.contacto textarea:focus {
+    outline: none;
+    border-color: var(--amarillo);
+}
+
+.contacto button.btn {
+    width: auto;
+    justify-self: start;
+}
+
+/* Footer */
+footer {
+    background: var(--negro);
+    padding: 40px 0;
+    border-top: 2px solid var(--amarillo);
+    text-align: center;
+    color: var(--texto-secundario);
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.sociales {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sociales a {
+    color: var(--texto);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.sociales a:hover {
+    color: var(--amarillo);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    .nav-links {
+        display: none;
+    }
+    .valor-card {
+        padding: 30px 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a href="#" class="logo">EMPRESA<span>SAS</span></a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#valores">Misión, Visión, Objetivo</a></li>
+            <li><a href="#imagenes">Galería</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <h1>Construyendo el <span>futuro</span> juntos</h1>
+        <p>Soluciones innovadoras con compromiso, calidad y visión de crecimiento sostenible.</p>
+        <a href="#valores" class="btn">Conócenos</a>
+        <a href="#contacto" class="btn btn-outline">Contacto</a>
+    </div>
+</section>
+
+<section class="valores" id="valores">
+    <div class="container">
+        <h2 class="section-title">Nuestros pilares</h2>
+        <p class="section-subtitle">Misión, Visión y Objetivo de nuestra empresa</p>
+        <div class="valores-grid">
+            <div class="valor-card mision fade-in">
+                <span class="valor-icon">🎯</span>
+                <h3>Misión</h3>
+                <p>Ofrecer productos y servicios de alta calidad que superen las expectativas de nuestros clientes, generando valor sostenible y contribuyendo al desarrollo de la comunidad con innovación y excelencia.</p>
+            </div>
+            <div class="valor-card vision fade-in">
+                <span class="valor-icon">🔭</span>
+                <h3>Visión</h3>
+                <p>Ser reconocidos como líderes en el sector a nivel nacional e internacional, destacados por nuestra integridad, tecnología de vanguardia y compromiso con el medio ambiente y la sociedad.</p>
+            </div>
+            <div class="valor-card objetivo fade-in">
+                <span class="valor-icon">⚡</span>
+                <h3>Objetivo</h3>
+                <p>Consolidar nuestra presencia en el mercado mediante la mejora continua de procesos, la satisfacción total del cliente y la expansión responsable de nuestras operaciones.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="imagenes-section" id="imagenes">
+    <div class="container">
+        <h2 class="section-title">Galería</h2>
+        <p class="section-subtitle">Imágenes de nuestra empresa</p>
+        <div class="imagenes-grid">
+            <div class="imagen-box">
+                <img src="Imagen1.png" alt="Imagen 1 de la empresa">
+                <div class="imagen-overlay">
+                    <h3>Imagen 1</h3>
+                </div>
+            </div>
+            <div class="imagen-box">
+                <img src="Imagen2.jpg" alt="Imagen 2 de la empresa">
+                <div class="imagen-overlay">
+                    <h3>Imagen 2</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <h4>10+</h4>
+                <p>Años de experiencia</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h4>500+</h4>
+                <p>Clientes satisfechos</p>
+            </div>
+            <div class="stat-item fade-in">
+                <h4>24/7</h4>
+                <p>Soporte disponible</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contacto" id="contacto">
+    <div class="container">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">Envíanos un mensaje y te responderemos a la brevedad.</p>
+        <form id="formContacto">
+            <input type="text" placeholder="Nombre completo" required>
+            <input type="email" placeholder="Correo electrónico" required>
+            <input type="tel" placeholder="Teléfono">
+            <textarea placeholder="Mensaje" rows="5" required></textarea>
+            <button type="submit" class="btn">Enviar mensaje</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Empresa SAS. Todos los derechos reservados.</p>
+        <div class="sociales">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="WhatsApp">💬</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+const form = document.getElementById('formContacto');
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Enviando...';
+    btn.style.opacity = '0.7';
+    setTimeout(() => {
+        btn.textContent = '¡Mensaje enviado!';
+        btn.style.background = 'var(--verde)';
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.opacity = '';
+            form.reset();
+        }, 2000);
+    }, 1000);
+});
+
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.padding = '10px 20px';
+        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
+    } else {
+        navbar.style.padding = '15px 20px';
+        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
+    }
+});
+</script>
+
+</body>
+</html>
